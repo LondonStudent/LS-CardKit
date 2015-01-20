@@ -7,4 +7,5 @@ Note: Because of CORS issues it needs to run on a server. Easiest way is to cd i
 - [ ] Attribution always spaced from bottom of text
 - [ ] LondonStudent logo sized properly/contrasting background
 - [ ] Error handling
+- [ ] Refactor crappy code
 - [ ] \~~_Design_\~~
