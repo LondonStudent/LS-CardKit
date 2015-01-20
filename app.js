@@ -60,7 +60,7 @@ window.onload = function() {
   		// Twitter
   		context.fillStyle = "#d2232a";
   		context.font = "bold 18px Helvetica";
-  		context.fillText(twitterElem.value, 103, 258)
+  		context.fillText('@'+twitterElem.value, 103, 258)
 
 
 		img = canvas.toDataURL('image/png');

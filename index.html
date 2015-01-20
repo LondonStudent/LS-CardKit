@@ -2,41 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<title>socialCards</title>
+	<link rel="stylesheet" href="./style.css">
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
 </head>
-<style>
-	#canvas {
-		border: 1px solid red;
-	}
-</style>
 <body>
-	<textarea id="text">Choose a good quote from the article. Don’t allow it to finish with a single word on a line, and no full stop pls</textarea>
-	<br>
-	<input type="text" id="name" value="Name" placeholder="Name">
-	<br>
-	<input type="text" id="twitter" value="@name" placeholder="@name">
-	<br>
-	<label for="quote">Quote</label>
-	<input name="quote" id="quote" type="checkbox" checked>
-	<br>
-	<label for="overlay">Overlay</label>
-	<input name="overlay" id="overlay" type="checkbox" checked>
-	<br>
-	<a href="#" id="download" download="card.png">Download</a>
-	<br>
 
-	<canvas id="canvas" width="755" height="378"></canvas>
+	<header class="header">
+		<img src="./LSLogo.png" alt="" class="header__logo">
+	</header>
+
+	<div class="render">
+		<canvas id="canvas" class="canvas" width="755" height="378"></canvas>
+		<a href="#" id="download" class="download" download="card.png">Download</a>
+	</div>
+
+	<form id="controls" class="controls" action="">
+		<textarea id="text" class="text textfield">Choose a good quote from the article. Don’t allow it to finish with a single word on a line, and no full stop pls</textarea>
+		<input type="text" class="name textfield" id="name" value="Name" placeholder="Name">
+		<div class="input-prepend">
+			<span class="input-prepend__item twitter-prepend">@</span>
+			<input type="text" class="twitter textfield input-prepend__field" id="twitter" value="name" placeholder="name">
+		</div>
+		<div class="checkbox">
+			<label for="quote">Quote</label>
+			<input name="quote" id="quote" type="checkbox" checked>
+		</div>
+		<div class="checkbox">
+			<label for="overlay">Overlay</label>
+			<input name="overlay" id="overlay" type="checkbox" checked>
+		</div>
+	</form>
 
 	<script src="./app.js"></script>
 </body>
 </html>
-
-<!--
-TODO
-- Markdown parsing
-- Fancy quotes
-- Attribution always spaced from bottom of text
-- Droid serif loading
- -->

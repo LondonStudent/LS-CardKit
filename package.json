@@ -2,5 +2,12 @@
   "name": "socialCards",
   "version": "0.0.1",
   "main": "app.js",
-  "author": "Ross Mackay"
+  "author": "Ross Mackay",
+  "devDependencies": {
+    "browser-sync": "^1.9.0",
+    "gulp": "^3.8.10",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-sass": "^1.3.2",
+    "gulp-uncss": "^0.5.2"
+  }
 }
