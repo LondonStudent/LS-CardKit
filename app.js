@@ -47,10 +47,10 @@ window.onload = function() {
   		// Quote marks
   		if (quote.checked) {
 			text = textElem.value + ' ”'
-  			context.font = "150px Droid Serif";
-  			context.fillText('“', 25, 150)
 		} else {
 			text = textElem.value
+  			context.font = "150px Droid Serif";
+  			context.fillText('“', 25, 150)
 		}
 
 		// Name

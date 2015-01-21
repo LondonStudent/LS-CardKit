@@ -12,7 +12,7 @@ CSS using scss and gulp. Run `npm install` to get dependencies and then `gulp` t
 - [ ] Refactor crappy code
 - [ ] Drag and drop images
 - [ ] Scale & move images
-- [ ] Quotes toggling breaks
+- [x] Quotes toggling breaks
 - [ ] Textfield doesn't always update 100%
 - [ ] No quotes left on their own line
 - [ ] Autoprefixer
