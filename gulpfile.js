@@ -3,6 +3,7 @@ var gulp = require('gulp')
 	,browserSync = require('browser-sync')
 	,uncss = require('gulp-uncss')
 	,cssmin = require('gulp-cssmin')
+    ,autoprefixer = require('gulp-autoprefixer')
 
 
 gulp.task('browser-sync', function() {
@@ -19,11 +20,12 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', function() {
+gulp.task('dist', function() {
 	gulp.src('./style.css')
 		.pipe(uncss({
             html: ['./index.html']
         }))
+        .pipe(autoprefixer())
         .pipe(cssmin())
         .pipe(gulp.dest('./dist'));
 })
