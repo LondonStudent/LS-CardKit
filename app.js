@@ -13,6 +13,8 @@ var canvas = document.getElementById('canvas')
 	,name = nameElem.value
 	,twitterHandle = twitterElem.value
 	,textColor = '#FFF'
+	,canvasW = canvas.width
+	,canvasH = canvas.height
 	,img
 
 var backgroundImg = new Image()
@@ -21,20 +23,24 @@ var LSLogo = new Image()
 LSLogo.src = './LSLogo.png'
 
 var drawToCanvas = function(){
-	context.clearRect (0, 0, canvas.width, canvas.height);
-	context.drawImage(backgroundImg, 0, 0)
+	var bW = backgroundImg.width
+		,bH = backgroundImg.height
+		,shortest = Math.max(canvasW/bW, canvasH/bH)
+
+	context.clearRect (0, 0, canvasW, canvasH)
+	context.drawImage(backgroundImg, 0, 0, bW*shortest, bH*shortest)
 
 	// Overlay
 	if (overlay.checked) {
 		context.fillStyle = "rgba(0,0,0,0.5)"
-		context.fillRect(0,0,canvas.width,canvas.height)
+		context.fillRect(0,0,canvasW,canvasH)
 	}
 
 	// Logo
 	var logoH = 200/4
 		,logoW = 1075/4
-		,logoOffsetH = canvas.height - logoH - 25
-		,logoOffsetW = canvas.width - logoW - 25
+		,logoOffsetH = canvasH - logoH - 25
+		,logoOffsetW = canvasW - logoW - 25
 	context.drawImage(LSLogo, logoOffsetW, logoOffsetH, logoW, logoH)
 
 	context.fillStyle = textColor
@@ -133,5 +139,3 @@ uploadElem.addEventListener('dragleave', fileDragLeave, false)
 
 // Google font loading
 this.setTimeout(drawToCanvas, 200)
-
-
