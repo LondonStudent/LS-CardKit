@@ -29,14 +29,15 @@ window.onload = function() {
 		// Overlay
 		if (overlay.checked) {
 			context.fillStyle = "rgba(0,0,0,0.5)";
-			context.fillRect(0,0,canvas.clientWidth,canvas.clientHeight)
+			context.fillRect(0,0,canvas.width,canvas.height)
 		}
+		console.log(canvas.width)
 
 		// Logo
 		var logoH = 200/4
 			,logoW = 1075/4
-			,logoOffsetH = canvas.clientHeight - logoH - 25
-			,logoOffsetW = canvas.clientWidth - logoW - 25
+			,logoOffsetH = canvas.height - logoH - 25
+			,logoOffsetW = canvas.width - logoW - 25
 		context.drawImage(LSLogo, logoOffsetW, logoOffsetH, logoW, logoH);
 
 		// Main text
