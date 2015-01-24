@@ -18,19 +18,20 @@
 	</div>
 
 	<form id="controls" class="controls" action="">
+		<div id="upload" class="upload">Drop image here</div>
 		<textarea id="text" class="text textfield">Choose a good quote from the article. Don’t allow it to finish with a single word on a line, and no full stop pls</textarea>
 		<input type="text" class="name textfield" id="name" value="Name" placeholder="Name">
 		<div class="input-prepend">
 			<span class="input-prepend__item twitter-prepend">@</span>
 			<input type="text" class="twitter textfield input-prepend__field" id="twitter" value="name" placeholder="name">
 		</div>
-		<div class="checkbox">
+		<div class="checkbox-wrap">
 			<label for="quote">Quote</label>
-			<input name="quote" id="quote" type="checkbox" checked>
+			<input name="quote" id="quote" type="checkbox" class="checkbox" checked>
 		</div>
-		<div class="checkbox">
+		<div class="checkbox-wrap">
 			<label for="overlay">Overlay</label>
-			<input name="overlay" id="overlay" type="checkbox" checked>
+			<input name="overlay" id="overlay" type="checkbox" class="checkbox" checked>
 		</div>
 	</form>
 

@@ -2,7 +2,8 @@
 @import './media';
 
 $red: #d2232a;
-$inputBorder: 1px solid rgba(147,128,108,.25);
+$borderColor: rgba(147,128,108,.25);
+$inputBorder: 1px solid $borderColor;
 
 * {
 	box-sizing: border-box;
@@ -78,6 +79,18 @@ body {
 	}
 }
 
+.upload {
+	border: 2px dashed #dedede;
+	border-radius: .2rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	text-align: center;
+
+	&--active {
+		background: white;
+	}
+}
+
 .textfield {
 	width: 100%;
 	border-radius: .2rem;
@@ -113,6 +126,6 @@ body {
 	border-radius: .2rem 0 0 .2rem;
 }
 
-.checkbox {
+.checkbox-wrap {
 	margin-bottom: 1rem;
 }

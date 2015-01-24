@@ -378,6 +378,15 @@ body {
       width: 40%;
       padding: 0 2rem; } }
 
+.upload {
+  border: 2px dashed #dedede;
+  border-radius: .2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center; }
+  .upload--active {
+    background: white; }
+
 .textfield {
   width: 100%;
   border-radius: .2rem;
@@ -408,5 +417,5 @@ body {
   border-left: 1px solid rgba(147, 128, 108, 0.25);
   border-radius: .2rem 0 0 .2rem; }
 
-.checkbox {
+.checkbox-wrap {
   margin-bottom: 1rem; }
