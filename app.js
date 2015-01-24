@@ -31,7 +31,6 @@ window.onload = function() {
 			context.fillStyle = "rgba(0,0,0,0.5)";
 			context.fillRect(0,0,canvas.width,canvas.height)
 		}
-		console.log(canvas.width)
 
 		// Logo
 		var logoH = 200/4
@@ -40,28 +39,30 @@ window.onload = function() {
 			,logoOffsetW = canvas.width - logoW - 25
 		context.drawImage(LSLogo, logoOffsetW, logoOffsetH, logoW, logoH);
 
-		// Main text
 		context.fillStyle = textColor
-  		context.font = "26px Droid Serif";
-  		wrapText(context, text, 103, 98, 400, 33);
 
-  		// Quote marks
-  		if (quote.checked) {
+		// Quote marks
+		if (quote.checked) {
 			text = textElem.value + ' ”'
-  			context.font = "150px Droid Serif";
-  			context.fillText('“', 25, 150)
+			context.font = "150px Droid Serif";
+			context.fillText('“', 25, 150)
 		} else {
 			text = textElem.value
 		}
 
-		// Name
-  		context.font = "bold 24px Helvetica";
-  		context.fillText(nameElem.value, 103, 235)
+		// Main text
+		context.font = "26px Droid Serif";
+		wrapText(context, text, 103, 98, 400, 33);
 
-  		// Twitter
-  		context.fillStyle = "#d2232a";
-  		context.font = "bold 18px Helvetica";
-  		context.fillText('@'+twitterElem.value, 103, 258)
+
+		// Name
+		context.font = "bold 24px Helvetica";
+		context.fillText(nameElem.value, 103, 235)
+
+		// Twitter
+		context.fillStyle = "#d2232a";
+		context.font = "bold 18px Helvetica";
+		context.fillText('@'+twitterElem.value, 103, 258)
 
 
 		img = canvas.toDataURL('image/png');
@@ -99,6 +100,7 @@ var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
 		}
 	}
 	context.fillText(line, x, y)
+	// Check last character isn't a quote
 	// return bottom bound?
 }
 
