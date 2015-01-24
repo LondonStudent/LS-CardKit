@@ -1,7 +1,9 @@
 @import './normalize';
+@import './media';
 
 $red: #d2232a;
-$borderColour: rgba(147,128,108,.25);
+$inputBorder: 1px solid rgba(147,128,108,.25);
+
 * {
 	box-sizing: border-box;
 }
@@ -26,18 +28,21 @@ body {
 
 .header__logo {
 	width: 30rem;
+	max-width: 100%;
 	display: block;
 	margin: 0 auto;
 }
 
 .render,
 .controls {
-	/*border: 1px solid blue;*/
 	float: left;
 }
 
 .render {
-	width: 60%;
+	margin-bottom: 1rem;
+	@include breakpoint(medium) {
+		width: 60%;
+	}
 }
 
 .canvas {
@@ -66,18 +71,20 @@ body {
 
 
 .controls {
-	width: 40%;
-	padding: 0 2rem;
+	width: 100%;
+	@include breakpoint(medium) {
+		width: 40%;
+		padding: 0 2rem;
+	}
 }
 
 .textfield {
 	width: 100%;
 	border-radius: .2rem;
-	border: 1px solid $borderColour;
+	border: $inputBorder;
 	padding: .5em .75em;
 	margin-bottom: 1rem;
 }
-
 
 .input-prepend {
   display: flex;
@@ -89,9 +96,6 @@ body {
   flex: 1;
 }
 
-.input-prepend__item {
-}
-
 .twitter {
 	border-left: none;
 	border-radius: 0 .2rem .2rem 0;
@@ -100,11 +104,12 @@ body {
 }
 
 .twitter-prepend {
-	padding: .6rem .1rem .4rem 0.5rem;
+	padding: .5rem .1rem .5rem 0.5rem;
 	background: white;
-	border-top: 1px solid $borderColour;
-	border-bottom: 1px solid $borderColour;
-	border-left: 1px solid $borderColour;
+	border-top: $inputBorder;
+	border-top: $inputBorder;
+	border-bottom: $inputBorder;
+	border-left: $inputBorder;
 	border-radius: .2rem 0 0 .2rem;
 }
 

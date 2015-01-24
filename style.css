@@ -339,15 +339,18 @@ body {
 
 .header__logo {
   width: 30rem;
+  max-width: 100%;
   display: block;
   margin: 0 auto; }
 
 .render, .controls {
-  /*border: 1px solid blue;*/
   float: left; }
 
 .render {
-  width: 60%; }
+  margin-bottom: 1rem; }
+  @media only screen and (min-width:40.063em) {
+    .render {
+      width: 60%; } }
 
 .canvas {
   width: 100%;
@@ -369,8 +372,11 @@ body {
     background: #a61c21; }
 
 .controls {
-  width: 40%;
-  padding: 0 2rem; }
+  width: 100%; }
+  @media only screen and (min-width:40.063em) {
+    .controls {
+      width: 40%;
+      padding: 0 2rem; } }
 
 .textfield {
   width: 100%;
@@ -394,8 +400,9 @@ body {
   padding-left: 0; }
 
 .twitter-prepend {
-  padding: .6rem .1rem .4rem 0.5rem;
+  padding: .5rem .1rem .5rem 0.5rem;
   background: white;
+  border-top: 1px solid rgba(147, 128, 108, 0.25);
   border-top: 1px solid rgba(147, 128, 108, 0.25);
   border-bottom: 1px solid rgba(147, 128, 108, 0.25);
   border-left: 1px solid rgba(147, 128, 108, 0.25);
