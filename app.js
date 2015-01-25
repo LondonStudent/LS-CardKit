@@ -23,8 +23,6 @@ var bg = {
 	,multiplier: 1
 }
 
-bg.img.src = './scrn.png'
-
 var logo = {
 	img: new Image()
 	,h: 50
