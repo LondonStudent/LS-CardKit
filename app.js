@@ -5,7 +5,7 @@ var canvas = document.getElementById('canvas')
 	,scale = document.getElementById('image-scale')
 	,textElem = document.getElementById('text')
 	,text = textElem.value
-	,name = document.getElementById('name')
+	,nameElem = document.getElementById('name')
 	,twitter = document.getElementById('twitter')
 	,textFields = document.getElementsByClassName('textfield')
 	,quote = document.getElementById('quote')
@@ -72,7 +72,7 @@ var drawToCanvas = function(){
 
 	// Name
 	context.font = "bold 24px Helvetica"
-	context.fillText(name.value, 103, 235)
+	context.fillText(nameElem.value, 103, 235)
 
 	// Twitter
 	context.fillStyle = "#d2232a"
