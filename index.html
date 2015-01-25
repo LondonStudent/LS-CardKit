@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<title>socialCards</title>
 	<link rel="stylesheet" href="./style.css">
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
 
 	<form id="controls" class="controls" action="">
 		<div id="upload" class="upload">Drop image here</div>
+		<input type="range" class="image-scale" id="image-scale" value="1" min="0.01" max="4" step="0.01">
 		<textarea id="text" class="text textfield">Choose a good quote from the article. Don’t allow it to finish with a single word on a line, and no full stop pls</textarea>
 		<input type="text" class="name textfield" id="name" value="Name" placeholder="Name">
 		<div class="input-prepend">
@@ -35,6 +37,7 @@
 		</div>
 	</form>
 
+	<script src="./hammer.min.js"></script>
 	<script src="./app.js"></script>
 </body>
 </html>

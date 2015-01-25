@@ -356,7 +356,7 @@ body {
   width: 100%;
   display: block;
   margin-bottom: 1rem;
-  /*cursor: move;*/ }
+  cursor: move; }
 
 .download {
   display: block;
@@ -386,6 +386,10 @@ body {
   text-align: center; }
   .upload--active {
     background: white; }
+
+.image-scale {
+  width: 100%;
+  margin-bottom: 1rem; }
 
 .textfield {
   width: 100%;

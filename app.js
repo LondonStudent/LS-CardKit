@@ -1,47 +1,61 @@
 var canvas = document.getElementById('canvas')
 	,context = canvas.getContext('2d')
 	,download = document.getElementById('download')
-	,uploadElem = document.getElementById('upload')
+	,upload = document.getElementById('upload')
+	,scale = document.getElementById('image-scale')
 	,textElem = document.getElementById('text')
-	,nameElem = document.getElementById('name')
-	,twitterElem = document.getElementById('twitter')
+	,text = textElem.value
+	,name = document.getElementById('name')
+	,twitter = document.getElementById('twitter')
 	,textFields = document.getElementsByClassName('textfield')
 	,quote = document.getElementById('quote')
 	,overlay = document.getElementById('overlay')
 	,checkboxes = document.getElementsByClassName('checkbox')
-	,text = textElem.value
-	,name = nameElem.value
-	,twitterHandle = twitterElem.value
 	,textColor = '#FFF'
-	,canvasW = canvas.width
-	,canvasH = canvas.height
-	,img
+	,hammertime = new Hammer(canvas)
 
-var backgroundImg = new Image()
+var bg = {
+	img: new Image()
+	,x: 0
+	,y: 0
+	,startX: 0
+	,startY: 0
+	,multiplier: 1
+}
 
-var LSLogo = new Image()
-LSLogo.src = './LSLogo.png'
+bg.img.src = './scrn.png'
+
+var logo = {
+	img: new Image()
+	,h: 50
+	,w: 268.5
+}
+logo.img.src = './LSLogo.png'
 
 var drawToCanvas = function(){
-	var bW = backgroundImg.width
-		,bH = backgroundImg.height
-		,shortest = Math.max(canvasW/bW, canvasH/bH)
+	if (scale.value == 1) {
+		bg.multiplier = Math.max(canvas.width/bg.img.width, canvas.height/bg.img.height)
+		scale.value = bg.multiplier
+	} else {
+		bg.multiplier = scale.value
+	}
 
-	context.clearRect (0, 0, canvasW, canvasH)
-	context.drawImage(backgroundImg, 0, 0, bW*shortest, bH*shortest)
+	bg.w = bg.img.width*bg.multiplier
+	bg.h = bg.img.height*bg.multiplier
+
+	context.clearRect (0, 0, canvas.width, canvas.height)
+	context.drawImage(bg.img, bg.x, bg.y, bg.w, bg.h)
 
 	// Overlay
 	if (overlay.checked) {
 		context.fillStyle = "rgba(0,0,0,0.5)"
-		context.fillRect(0,0,canvasW,canvasH)
+		context.fillRect(0,0,canvas.width,canvas.height)
 	}
 
 	// Logo
-	var logoH = 200/4
-		,logoW = 1075/4
-		,logoOffsetH = canvasH - logoH - 25
-		,logoOffsetW = canvasW - logoW - 25
-	context.drawImage(LSLogo, logoOffsetW, logoOffsetH, logoW, logoH)
+	var logoOffsetH = canvas.height - logo.h - 25
+		,logoOffsetW = canvas.width - logo.w - 25
+	context.drawImage(logo.img, logoOffsetW, logoOffsetH, logo.w, logo.h)
 
 	context.fillStyle = textColor
 
@@ -58,18 +72,16 @@ var drawToCanvas = function(){
 	context.font = "26px Droid Serif"
 	wrapText(context, text, 103, 98, 400, 33)
 
-
 	// Name
 	context.font = "bold 24px Helvetica"
-	context.fillText(nameElem.value, 103, 235)
+	context.fillText(name.value, 103, 235)
 
 	// Twitter
 	context.fillStyle = "#d2232a"
 	context.font = "bold 18px Helvetica"
-	context.fillText('@'+twitterElem.value, 103, 258)
+	context.fillText('@'+twitter.value, 103, 258)
 
-	img = canvas.toDataURL('image/png')
-	download.href = img
+	download.href = canvas.toDataURL('image/png')
 }
 
 // From http://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
@@ -117,7 +129,10 @@ var fileDropped = function(e) {
 
 	reader.onload = (function(theFile) {
 		return function(e) {
-			backgroundImg.src = e.target.result
+			bg.img.src = e.target.result
+			scale.value = 1
+			bg.x = 0
+			bg.y = 0
 			drawToCanvas()
 		}
 	})(f)
@@ -133,9 +148,20 @@ for (var i = 0; i < checkboxes.length; i++) {
 	checkboxes[i].addEventListener('change', drawToCanvas)
 }
 
-uploadElem.addEventListener('dragover', fileDraggedOver, false)
-uploadElem.addEventListener('drop', fileDropped, false)
-uploadElem.addEventListener('dragleave', fileDragLeave, false)
+scale.addEventListener('change', drawToCanvas)
+upload.addEventListener('dragover', fileDraggedOver, false)
+upload.addEventListener('drop', fileDropped, false)
+upload.addEventListener('dragleave', fileDragLeave, false)
 
-// Google font loading
-this.setTimeout(drawToCanvas, 200)
+hammertime.on('panstart', function(ev) {
+	bg.startX = bg.x
+	bg.startY = bg.y
+})
+
+hammertime.on('pan', function(ev) {
+    bg.x = ev.deltaX + bg.startX
+    bg.y = ev.deltaY + bg.startY
+    drawToCanvas()
+})
+
+drawToCanvas()
