@@ -423,3 +423,11 @@ body {
 
 .checkbox-wrap {
   margin-bottom: 1rem; }
+
+.footer {
+  clear: both;
+  font-size: small;
+  bottom: 0;
+  position: absolute;
+  display: block;
+  width: 95%;}
